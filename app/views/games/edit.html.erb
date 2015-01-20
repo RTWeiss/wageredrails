@@ -1,0 +1,26 @@
+<h1> Edit game </h1>
+
+<%= form_for(@game) do |f| %>
+  <%= f.date_select :date %>
+
+  <%= f.label :time %>
+  <%= f.text_field :time %>
+
+  <%= f.label :home_team %>
+  <%= f.text_field :home_team %>
+
+  <%= f.label :away_team %>
+  <%= f.text_field :away_team %>
+
+  <%= f.label :home_final_score %>
+  <%= f.text_field :home_final_score %>
+
+  <%= f.label :away_final_score %>
+  <%= f.text_field :away_final_score %>
+
+  <%= f.label :margin %>
+  <%= f.text_field :margin %>
+
+  <%= f.submit "Save Changes" %>
+  
+<% end %>

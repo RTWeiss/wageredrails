@@ -1,0 +1,21 @@
+<% provide(:title, 'Games index') %>
+<h1> All Games </h1>
+
+<%= will_paginate %>
+<ul>
+  <% @games.each do |game| %>
+  	<li>
+  	  <a href="/games/<%= game.id %>"><%= game.away_team %> at <%= game.home_team %></a><%= format_date(game.date) %> at <%= game.time %><br />
+  	  <% @users.each do |user| %>
+  	    <% if user.id == current_user.id %>
+  	    <% else %>
+  	      <a href="/users/<%= user.id %>/games/<%= game.id %>/bets/new"><%= user.username %></a>
+  	    <% end %>
+  	  <% end %>
+  	</li>
+  <% end %>
+</ul>
+
+<%= will_paginate %>
+
+<%= link_to "Log out", logout_path, method: "delete" %>

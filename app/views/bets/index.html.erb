@@ -1,0 +1,61 @@
+<h2>Bets History</h2>
+<h4>Created Bets</h4>
+<ul>
+  <% @player_1_bets.each do |bet| %>
+    <li>
+      <a href="/bets/<%= bet.id %>">Bet # <%= bet.id %></a><br />
+      Bet Status: <%= bet.status %><br />
+      Bet Amount: $ <%= bet.amount %><br />
+      <% if bet.game.margin.nil? %>
+        <%= display_matchup(bet.game) %>
+        <%= format_date(bet.game.date) %> at <%= bet.game.time %><br />
+      <% else %>
+        <%= bet.game.home_team %>: <%= bet.game.home_final_score %><br />
+        <%= bet.game.away_team %>: <%= bet.game.away_final_score %><br />
+        Margin of victory: <%= bet.game.margin %><br />
+      <% end %>
+      <%= bet.players.first.user.username %>'s Pick:
+      <%= display_pick(bet.players.first, bet.game) %>      
+      <%= display_handicap(bet.players.first) %>
+      <% if bet.players.count == 1 %> </h1>
+      <% else %> 
+        <%= bet.players.last.user.username %>'s pick: <%= display_pick(bet.players.last, bet.game) %>
+        <%= display_handicap(bet.players.last) %>
+      <% end %>
+      <% if bet.game.margin.nil? %> 
+        Game results are pending<br />
+      <% else %>
+        <%= display_winning_better(bet) %>
+      <% end %>      
+    </li>
+  <% end %>
+</ul>
+<h4> Received Bets</h4>
+<ul>
+  <% @player_2_bets.each do |bet| %>
+    <li>
+      <a href="/bets/<%= bet.id %>">Bet # <%= bet.id %></a><br />
+      Bet Status: <%= bet.status %> <br />
+      Bet Amount: $ <%= bet.amount %><br />
+      <% if bet.game.margin.nil? %>
+        <%= display_matchup(bet.game) %>
+        <%= format_date(bet.game.date) %> at <%= bet.game.time %>
+      <% else %>
+        <%= home_score(bet.game) %>
+        <%= away_score(bet.game) %>
+        Margin of Victory: <%= bet.game.margin %>
+      <% end %>
+      <br />
+      <%= bet.players.first.user.username %>'s Pick:
+      <%= display_pick(bet.players.first, bet.game) %>
+      <%= display_handicap(bet.players.first) %>
+      <%= bet.players.last.user.username %>'s Pick: <%= display_pick(bet.players.last, bet.game) %>
+      <%= display_handicap(bet.players.last) %>
+      <% if bet.game.margin.nil? %>
+        Game results are pending<br />
+      <% else %>
+        <%= display_winning_better(bet) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

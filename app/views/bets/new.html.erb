@@ -1,0 +1,16 @@
+<form name="create_bet" action="/users/<%= @user.id %>/games/<%= @game.id %>/bets" method="post">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <label>Your pick: 
+    <select name="player[home]">
+      <option value="true"><%= @game.home_team %></option>
+      <option value="false"><%= @game.away_team %></option>
+    </select>
+  </label>
+  <label class="field">Points:
+    <input type="text" name="player[handicap]"/>
+  </label>
+  <label class="field">Bet Amount:
+    <input type="text" name="bet[amount]" />
+  </label><br />
+    <input type="submit" value="Submit Bet"></input>
+</form>

@@ -1,0 +1,34 @@
+<h1>Received Bets- Pending</h1>
+
+<ul>
+  <%= @user_bets_pending.each do |bet| %>
+    <li>
+      Bet Opponent: <%= bet.players.first.user.username %><br />
+      <%= bet.game.away_team %> at <%= bet.game.home_team %><br />
+      <%= bet.game.date %> at <%= bet.game.time %><br />
+      <%= bet.players.first.user.username %> Picks:<br />
+      <% if bet.players.first.home %>
+        <%= bet.game.home_team %>
+      <% else %>
+        <%= bet.game.away_team %>
+      <% end %>
+      <% if bet.players.first.handicap > 0 %>
+        + <%= bet.players.first.handicap %>
+      <% else %>
+        <%= bet.players.first.handicap %>
+      <% end %>
+      <br />Bet Amount: $ <%= bet.amount %><br />
+      <form name="create_player" action="/bets/<%= bet.id %>/players" method="post">
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+        <div class="field">
+          <select name="bet[status]">
+            <option value="accepted">Accept Bet</option>
+            <option value="rejected">Reject Bet</option>
+          </select>
+        </div>
+          <input type="submit" value="Submit"></input>
+      </form>
+    </li>
+  <% end %>
+</ul>
+  
