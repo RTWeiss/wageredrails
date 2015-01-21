@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 	before_action :admin_user, only: [:new, :create, :edit, :update]
 
 	def index
-		@games = Game.paginate(page: params[:page])
+		@games = Game.where("home_final_score = ? AND away_final_score = ?", 0, 0)
 		@users = User.all
 	end
 

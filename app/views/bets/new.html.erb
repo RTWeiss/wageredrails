@@ -1,16 +1,32 @@
-<form name="create_bet" action="/users/<%= @user.id %>/games/<%= @game.id %>/bets" method="post">
-  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
-  <label>Your pick: 
-    <select name="player[home]">
-      <option value="true"><%= @game.home_team %></option>
-      <option value="false"><%= @game.away_team %></option>
-    </select>
-  </label>
-  <label class="field">Points:
-    <input type="text" name="player[handicap]"/>
-  </label>
-  <label class="field">Bet Amount:
-    <input type="text" name="bet[amount]" />
-  </label><br />
-    <input type="submit" value="Submit Bet"></input>
-</form>
+<h2 class="ui block header">Create Bet</h2>
+<h3 class="ui center aligned header"> <%= @game.away_team %> at <%= @game.home_team %></h3>
+<h5 class="ui center aligned header"><%= format_date(@game.date) %> at <%= @game.time %></h5>
+<div class="ui page grid">
+  <div class="fourteen wide column">
+    <h4 class="ui dividing header">Bet Terms:</h4>
+    <h3 class="ui header">Bet Opponent:
+    <% if @user.image %>
+      <%= image_tag(@user.image.source.icon40.url, alt: @user.username, :class => "ui avatar image") %>
+    <% else %>
+      <img class="ui avatar image"src="https://s3.amazonaws.com/wagerednumerotres/images/fallback/image60_default.jpg">
+    <% end %>
+    <%= @user.username %></h3>
+
+    <form name="create_bet" action="/users/<%= @user.id %>/games/<%= @game.id %>/bets" method="post" class="ui form segment">
+      <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+      <label>Your pick: 
+        <select name="player[home]">
+          <option value="true"><%= @game.home_team %></option>
+          <option value="false"><%= @game.away_team %></option>
+        </select>
+      </label>
+      <label class="field">Points:
+        <input type="text" name="player[handicap]"/>
+      </label>
+      <label class="field">Bet Amount:
+        <input type="text" name="bet[amount]" />
+      </label><br />
+        <input type="submit" value="Submit Bet"class="ui blue button"></input>
+    </form>
+  </div>
+</div>  

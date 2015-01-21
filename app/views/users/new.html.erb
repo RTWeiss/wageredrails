@@ -1,18 +1,24 @@
-<%= form_for(@user) do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+<% provide(:title, "Sign Up") %>
+<h1 class="ui header">Sign Up</h1>
+<div class="ui page grid">    
+  <div class="fourteen wide column">
+    <%= form_for(@user, :html => {:class => "ui raised form segment"}) do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
 
-  <%= f.submit "Create account" %>
-<% end %>
+      <%= f.submit "Create account", :class => "ui blue button" %>
+    <% end %>
+  </div>
+</div>

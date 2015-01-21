@@ -1,19 +1,23 @@
 <% provide(:title, "Log in") %>
-<h1>Log in </h1>
+<h1 class="ui header">Log in </h1>
+<div class="ui page grid">
+  <div class="sixteen wide column">
 
-<%= form_for(:session, url: login_path) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+		<%= form_for(:session, url: login_path, :html => {:class => "ui raised form segment"}) do |f| %>
+		  <%= f.label :email %>
+		  <%= f.email_field :email %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+		  <%= f.label :password %>
+		  <%= f.password_field :password %>
 
-  <%= f.label :remember_me do %>
-    <%= f.check_box :remember_me %>
-    <span>Remember me on this computer</span>
-  <% end %>
+		  <%= f.label :remember_me do %>
+		    <%= f.check_box :remember_me %>
+		    <span>Remember me on this computer</span>
+		  <% end %>
 
-  <%= f.submit "Log in" %>
-<% end %>
+		    <%= f.submit "Log in", :class => "ui fluid blue button" %>
+		<% end %>
 
-<p> New User? <%= link_to "Sign up now!", signup_path %></p>
+		<p> New User? <%= link_to "Sign up now!", signup_path %></p>
+  </div>
+</div>

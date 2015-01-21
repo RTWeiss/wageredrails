@@ -83,4 +83,5 @@ module BetsHelper
 	def away_score(game)
 		content_tag(:p, "#{game.away_team}: #{game.away_final_score}")
 	end
+
 end

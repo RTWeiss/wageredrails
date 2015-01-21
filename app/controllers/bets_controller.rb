@@ -1,6 +1,6 @@
 class BetsController < ApplicationController
 	before_action :logged_in_user, only: [:show, :new, :create, :index]
-	before_action :correct_user, only: [:new, :create, :index]
+#	before_action :correct_user, only: [:new, :create, :index]
 
 	def show
 		@bet = Bet.find(params[:bet_id])
@@ -70,8 +70,8 @@ class BetsController < ApplicationController
     end
 
     def correct_user
-    	@user = User.find(params[:id])
-    	redirect_to(root_url) unless current_user?(@user)
+    	@user_present = User.find(params[:id])
+    	redirect_to(root_url) unless current_user?(@user_present)
     end
 
 end

@@ -21,7 +21,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def store_dir
-    "users/#{model.user_id}/"
+    "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   def default_url
