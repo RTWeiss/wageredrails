@@ -1,0 +1,9 @@
+ 
+<form name="create_comment" action="/bets/<%= @bet.id %>/comments" method="post">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+  <label class="field">Comment: 
+    <input type="text" name="comment[content]"/>
+  </label><br />
+    <input type="submit" value="Submit Bet"></input>
+</form>

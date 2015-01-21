@@ -1,11 +1,10 @@
 <h1>Upload an Image</h1>
 
 <%= form_for(@image) do |f| %>
-  <h3>1. Select an Image</h3>
+  <h3> Select an Image</h3>
 
   <div>
     <%= f.file_field :source %>
-    <%= render partial: "shared/_error_messages", locals: { model: @image, field: :image } %>
   </div>
 
   <div><%= f.submit "Upload Image!", { id: "commit" } %></div>

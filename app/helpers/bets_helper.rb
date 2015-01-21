@@ -1,4 +1,5 @@
 module BetsHelper
+
 	def current_user
 		if (user_id = session[:user_id])
 			@current_user ||= User.find_by(id: user_id)
@@ -9,6 +10,18 @@ module BetsHelper
 				@current_user = user
 			end
 		end
+	end
+
+	def logged_in?
+		!current_user.nil?
+	end
+
+	def current_user?(user)
+		user == current_user
+	end
+
+	def store_location
+		session[:forwarding_url] = request.url if request.get?
 	end
 
 	def display_winning_better(bet)
@@ -25,12 +38,6 @@ module BetsHelper
 	  elsif bet.status == "pending"
 	  	content_tag(:p, "This bet never received a response!")
 	  end
-	end
-
-
-
-	def current_user?(user)
-		user == current_user
 	end
 
 	def display_pick(player, game)
@@ -76,8 +83,4 @@ module BetsHelper
 	def away_score(game)
 		content_tag(:p, "#{game.away_team}: #{game.away_final_score}")
 	end
-
-
-
-
 end

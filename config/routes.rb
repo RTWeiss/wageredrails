@@ -4,16 +4,17 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  resources :users  
+  resources :users
   resources :games
   get 'users/:user_id/games/:game_id/bets/new', to: 'bets#new'
   post 'users/:id/games/:game_id/bets', to: 'bets#create'
-  get 'bets/:id', to: 'bets#show'
+  get 'bets/:bet_id', to: 'bets#show'
+  post 'bets/:bet_id/comments', to: 'comments#create'
   get 'players/review', to: 'players#new'
   post 'bets/:id/players', to: 'players#create'
   get 'history', to: 'bets#index'
-
-  
+  get 'images/new' => 'images#new'
+  post 'images' => 'images#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

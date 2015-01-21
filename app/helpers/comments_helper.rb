@@ -1,4 +1,4 @@
-module ImagesHelper
+module CommentsHelper
 
 	def current_user
 		if (user_id = session[:user_id])
@@ -18,5 +18,9 @@ module ImagesHelper
 
 	def current_user?(user)
 		user == current_user
+	end
+
+	def store_location
+		session[:forwarding_url] = request.url if request.get?
 	end
 end

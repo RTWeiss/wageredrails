@@ -4,7 +4,7 @@ class Comment < ActiveRecord::Base
 
 	validates :content, length: { in: 4..300 }
 	validates_presence_of :created_at
-	before :valid?, :set_created_at
+	before_validation :set_created_at
 
 	def set_created_at
 		self.created_at = Time.now

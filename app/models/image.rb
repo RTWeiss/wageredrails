@@ -5,7 +5,7 @@ class Image < ActiveRecord::Base
 	validates_presence_of :source,
 	  :message => "You did not choose a file to upload."
 
-	before :valid?, :set_created_at
+	before_validation :set_created_at
 
 	def set_created_at
 		self.created_at = Time.now
