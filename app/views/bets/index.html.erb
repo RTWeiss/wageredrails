@@ -1,6 +1,7 @@
 <div class="ui page grid">
   <div class="ui sixteen wide column">
     <h2 class="ui header">Bets History</h2>
+
     <h4 class="ui header">Created Bets</h4>
     <div class="ui relaxed list">
       <% @player_1_bets.each do |bet| %>
@@ -17,6 +18,7 @@
               <%= bet.game.away_team %>: <%= bet.game.away_final_score %><br />
               Margin of victory: <%= bet.game.margin %><br />
             <% end %>
+            <%= image_tag(user_avatar_url(bet.players.first.user), :class => "ui avatar image") %>
             <%= bet.players.first.user.username %>'s Pick:
             <%= display_pick(bet.players.first, bet.game) %>      
             <%= display_handicap(bet.players.first) %>

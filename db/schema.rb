@@ -11,19 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150114175821) do
+ActiveRecord::Schema.define(version: 20150130005642) do
 
   create_table "bets", force: :cascade do |t|
-    t.integer  "player_1"
-    t.integer  "player_2"
     t.integer  "amount"
-    t.string   "status",     default: "pending"
+    t.string   "status",             default: "pending"
     t.integer  "game_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.float    "points"
+    t.string   "team"
+    t.integer  "initiating_user_id"
+    t.integer  "receiving_user_id"
   end
 
   add_index "bets", ["game_id"], name: "index_bets_on_game_id"
+  add_index "bets", ["initiating_user_id"], name: "index_bets_on_initiating_user_id"
+  add_index "bets", ["receiving_user_id"], name: "index_bets_on_receiving_user_id"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -56,18 +60,6 @@ ActiveRecord::Schema.define(version: 20150114175821) do
   end
 
   add_index "images", ["user_id"], name: "index_images_on_user_id"
-
-  create_table "players", force: :cascade do |t|
-    t.integer  "bet_id"
-    t.integer  "user_id"
-    t.float    "handicap"
-    t.boolean  "home"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "players", ["bet_id"], name: "index_players_on_bet_id"
-  add_index "players", ["user_id"], name: "index_players_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

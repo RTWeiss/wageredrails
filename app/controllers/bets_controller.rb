@@ -4,50 +4,34 @@ class BetsController < ApplicationController
 
 	def show
 		@bet = Bet.find(params[:bet_id])
-		@comment = Comment.new
 	end
 
 	def new
 		@bet = Bet.new
-		@player = Player.new
 		@user = User.find(params[:user_id])
 		@game = Game.find(params[:game_id])
 	end
 
 	def create
-		@user = User.find(params[:id])
+		@user = User.find(params[:user_id])
 		@game = Game.find(params[:game_id])
-		@bet = Bet.new(bet_params)
-		@bet.player_1 = current_user.id
-		@bet.player_2 = @user.id 
+		@bet = current_user.initiated_bets.build(bet_params)
+		@bet.receiving_user = @user
 
-		@bet.game_id = @game.id
-		@bet.save! 
-
-		@player = Player.new(player_params)
-		@player.bet_id = @bet.id
-		@player.user_id = current_user.id
-
-    if @player.save
-    	redirect_to "/"
+    if @bet.save
+    	redirect_to root_url
     else
     	render 'new'
     end
 	end
 
 	def index
-		@player_1_bets = Bet.where(player_1: current_user.id)
-		@player_2_bets = Bet.where(player_2: current_user.id, status: "accepted")
   end
   
   private
 
     def bet_params
-    	params.require(:bet).permit(:amount)
-    end
-
-    def player_params
-    	params.require(:player).permit(:home, :handicap)
+    	params.require(:bet).permit(:team, :points, :amount)
     end
 
     def current_user

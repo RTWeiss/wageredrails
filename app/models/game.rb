@@ -3,15 +3,13 @@ class Game < ActiveRecord::Base
 
   validates :home_team, presence: true
   validates :away_team, presence: true
-
-  def winner
-    home_score = home_final_score
-    away_score = away_final_score
-
-    if home_score > away_score
-      :home
+  
+  # winning team
+  def victorious_team
+    if home_final_score > away_final_score
+      home_team
     elsif away_score > home_score
-      :away
+      away_team
     else
       :tie
     end
