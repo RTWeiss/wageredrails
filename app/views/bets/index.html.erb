@@ -4,7 +4,7 @@
 
     <h4 class="ui header">Created Bets</h4>
     <div class="ui relaxed list">
-      <% @player_1_bets.each do |bet| %>
+      <% @user_bets.each do |bet| %>
         <div class="ui raised segment">
           <div class="item">
             <a href="/bets/<%= bet.id %>">Bet # <%= bet.id %></a><br />

@@ -4,31 +4,31 @@
 <div class="ui page grid">
   <div class="twelve wide column">
     <% @games.each do |game| %>
-    <div class="ui center aligned segment">
-     <h3 class="ui header"><%= game.away_team %> at <%= game.home_team %>
-      <div class="sub header"><a href="/games/<%= game.id %>"><%= format_date(game.date) %> at <%= game.time %></a></div></h3>
-      <div class="ui floating dropdown labeled search icon green button">
-        <i class="search icon"></i>
-        <span class="text">Search for User</span>
-        <div class="menu">
-          <div class="header">
-            <i class="dollar icon"></i>
-            Make a bet
+      <div class="ui center aligned segment">
+       <h3 class="ui header"><%= game.away_team %> at <%= game.home_team %>
+        <div class="sub header"><a href="/games/<%= game.id %>"><%= format_date(game.date) %> at <%= game.time %></a></div></h3>
+        <div class="ui floating dropdown labeled search icon green button">
+          <i class="search icon"></i>
+          <span class="text">Search for User</span>
+          <div class="menu">
+            <div class="header">
+              <i class="dollar icon"></i>
+              Make a bet
+            </div>
+            <div class="divider"></div>
+            <% @users.each do |user| %>
+            <% if user.id == current_user.id %>
+            <% else %>
+            <div class="item">
+             <a href="/users/<%= user.id %>/games/<%= game.id %>/bets/new"><%= user.username %></a>
+           </div>
+           <% end %>
+           <% end %>
           </div>
-          <div class="divider"></div>
-          <% @users.each do |user| %>
-          <% if user.id == current_user.id %>
-          <% else %>
-          <div class="item">
-           <a href="/users/<%= user.id %>/games/<%= game.id %>/bets/new"><%= user.username %></a>
-         </div>
-         <% end %>
-         <% end %>
-       </div>
-     </div>  
-   </div>
-   <% end %>
- </div>
+        </div>  
+      </div>
+    <% end %>
+  </div>
 </div>
 
 

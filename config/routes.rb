@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'history', to: 'bets#index'
   get 'users/:user_id/games/:game_id/bets/new', to: 'bets#new'
   post 'users/:user_id/games/:game_id/bets', to: 'bets#create'
+  get 'bets/review', to: 'bets#review'
+  post 'bets/:id/status', to: 'bets#status' 
   get 'images/new' => 'images#new'
   post 'images' => 'images#create'
 
@@ -36,7 +38,7 @@ Rails.application.routes.draw do
   #     end
   #
   #     collection do
-  #       get 'sold'
+  #       get 'sold' 
   #     end
   #   end
 

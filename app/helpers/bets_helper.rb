@@ -24,28 +24,28 @@ module BetsHelper
 		session[:forwarding_url] = request.url if request.get?
 	end
 
-	def display_winning_better(bet)
-		current_user_id = current_user.id
-
-		if current_user_id == bet.winning_better && bet.status == "accepted"
-			content_tag(:p, "Bet Outcome: You have won this bet!")
-	  elsif current_user_id == bet.winning_better && bet.status == "rejected"
-	  	content_tag(:p, "Bet Outcome: You would have won this bet!")
-	  elsif current_user_id != bet.winning_better && bet.status == "accepted"
-	  	content_tag(:p, "Bet outcome: You have lost this bet!")
-	  elsif current_user_id != bet.winning_better && bet.status == "rejected"
-	  	content_tag(:p, "Bet outcome: You would have lot this bet! Luckily it was rejected")
-	  elsif bet.status == "pending"
-	  	content_tag(:p, "This bet never received a response!")
-	  end
-	end
+	#	def display_winning_better(bet)
+	#		current_user_id = current_user.id
+	#
+	#		if current_user_id == bet.winning_better && bet.status == "accepted"
+	#			content_tag(:p, "Bet Outcome: You have won this bet!")
+	#		elsif current_user_id == bet.winning_better && bet.status == "rejected"
+	#			content_tag(:p, "Bet Outcome: You would have won this bet!")
+	#		elsif current_user_id != bet.winning_better && bet.status == "accepted"
+	#			content_tag(:p, "Bet outcome: You have lost this bet!")
+	#		elsif current_user_id != bet.winning_better && bet.status == "rejected"
+	#			content_tag(:p, "Bet outcome: You would have lot this bet! Luckily it was rejected")
+	#		elsif bet.status == "pending"
+	#			content_tag(:p, "This bet never received a response!")
+	##	end
+	## end
 
 	def display_pick(player, game)
 		if player.home 
 			content_tag(:div, "#{game.home_team}", class: ["strong"])
-	  else
-	  	content_tag(:div, "#{game.away_team}", class: ["strong"])
-	  end
+		else
+			content_tag(:div, "#{game.away_team}", class: ["strong"])
+		end
 	end
 
 	def display_handicap(player)
@@ -91,8 +91,4 @@ module BetsHelper
 			"https://s3.amazonaws.com/wagerednumerotres/images/fallback/image60_default.jpg"
 		end
 	end
-
-
-
-
 end

@@ -23,6 +23,18 @@ class Bet < ActiveRecord::Base
     elsif victorious_team != team && margin + points == 0
       :tie
     end
+  end 
+
+  def receiving_user_team
+    initiating_user_team = team
+    if initiating_user_team == self.game.home_team
+      self.game.away_team
+    else
+      self.game.home_team
+    end
   end
-  
+
+  def receiving_user_points
+    points * -1
+  end
 end
