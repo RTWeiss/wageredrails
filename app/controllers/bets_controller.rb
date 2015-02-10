@@ -1,6 +1,6 @@
 class BetsController < ApplicationController
-	before_action :logged_in_user, only: [:show, :new, :create, :index]
-#	before_action :correct_user, only: [:new, :create, :index]
+  before_action :logged_in_user, only: [:show, :new, :create, :index]
+# before_action :correct_user, only: [:new, :create, :index]
 
   def show
     @bet = Bet.find(params[:bet_id])
@@ -20,10 +20,10 @@ class BetsController < ApplicationController
     @bet.game = @game
 
     if @bet.save
-     redirect_to root_url
-   else
-     render 'new'
-   end
+      redirect_to root_url
+    else
+      render 'new'
+    end
   end
 
   def review
@@ -35,10 +35,10 @@ class BetsController < ApplicationController
     bet.update(status_param)
 
     if bet.save
-     redirect_to :back
-   else
-     redirect_to "/"
-   end
+      redirect_to :back
+    else
+      redirect_to "/"
+    end
   end
 
   def index
@@ -58,21 +58,21 @@ class BetsController < ApplicationController
 
   def current_user
     if (user_id = session[:user_id])
-     @current_user ||= User.find_by(id: user_id)
-   elsif (user_id = cookies.signed[:user_id])
-     user = User.find_by(id: user_id)
-     if user && user.authenticated?(cookies[:remember_token])
-      @current_user = user
+      @current_user ||= User.find_by(id: user_id)
+    elsif (user_id = cookies.signed[:user_id])
+      user = User.find_by(id: user_id)
+      if user && user.authenticated?(cookies[:remember_token])
+        @current_user = user
+      end
     end
-  end
   end
 
   def logged_in_user
     unless logged_in?
-     store_location
-     flash[:danger] = "Please log in."
-     redirect_to login_url
-   end
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url
+    end
   end
 
   def correct_user
