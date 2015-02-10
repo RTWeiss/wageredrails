@@ -8,7 +8,7 @@ class Game < ActiveRecord::Base
   def victorious_team
     if home_final_score > away_final_score
       home_team
-    elsif away_score > home_score
+    elsif away_final_score > home_final_score
       away_team
     else
       :tie

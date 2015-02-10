@@ -1,10 +1,10 @@
 <div class="ui page grid">
   <div class="ui sixteen wide column">
-    <h2 class="ui header">Bets History</h2>
-
-    <h4 class="ui header">Created Bets</h4>
+    <h2 class="ui header">Bets Index</h2>
+    <h4 class="ui header">Initiated Bets
+      <div class="sub header">Count: <%= initiated_bets.count %></div></h4>
     <div class="ui relaxed list">
-      <% @user_bets.each do |bet| %>
+      <% @initiated_bets.each do |bet| %>
         <div class="ui raised segment">
           <div class="item">
             <a href="/bets/<%= bet.id %>">Bet # <%= bet.id %></a><br />
@@ -18,27 +18,22 @@
               <%= bet.game.away_team %>: <%= bet.game.away_final_score %><br />
               Margin of victory: <%= bet.game.margin %><br />
             <% end %>
-            <%= image_tag(user_avatar_url(bet.players.first.user), :class => "ui avatar image") %>
-            <%= bet.players.first.user.username %>'s Pick:
-            <%= display_pick(bet.players.first, bet.game) %>      
-            <%= display_handicap(bet.players.first) %>
-            <% if bet.players.count == 1 %> </h1>
-            <% else %> 
-              <%= bet.players.last.user.username %>'s pick: <%= display_pick(bet.players.last, bet.game) %>
-              <%= display_handicap(bet.players.last) %>
-            <% end %>
+            <%= image_tag(user_avatar_url(bet.initiating_user), :class => "ui avatar image") %>
+            <%= bet.initiating_user.username %>'s Pick: <%= bet.team %> <%= bet.points %> points<br />      
+            <%= image_tag(user_avatar_url(bet.receiving_user), :class => "ui avatar image") %>
+            <%= bet.receiving_user.username %>'s pick: <%= bet.receiving_user_team %> <%= bet.receiving_user_points %> points
             <% if bet.game.margin.nil? %> 
               Game results are pending<br />
             <% else %>
-              <%= display_winning_better(bet) %>
+              <%= bet.winner_of_bet.username %> wins the bet!
             <% end %>      
           </div>
         </div>
       <% end %>
     </div>
-    <h4 class="ui header"> Received Bets</h4>
+    <h4 class="ui header">Received Bets <div class="sub header">Count: <%= @received_bets.count %></div></h4>
     <div class="ui relaxed list">
-      <% @player_2_bets.each do |bet| %>
+      <% @received_bets.each do |bet| %>
         <div class="ui raised segment">
           <div class="item">
             <a href="/bets/<%= bet.id %>">Bet # <%= bet.id %></a><br />
@@ -48,20 +43,20 @@
               <%= display_matchup(bet.game) %>
               <%= format_date(bet.game.date) %> at <%= bet.game.time %>
             <% else %>
-              <%= home_score(bet.game) %>
-              <%= away_score(bet.game) %>
-              Margin of Victory: <%= bet.game.margin %>
+              <p><%= bet.game.home_team %> Score: <%= bet.game.home_final_score %><br />
+                <%= bet.game.away_team %> Score: <%= bet.game.away_final_score %><br />
+                Margin of Victory: <%= bet.game.margin %> points
+              </p>
             <% end %>
             <br />
-            <%= bet.players.first.user.username %>'s Pick:
-            <%= display_pick(bet.players.first, bet.game) %>
-            <%= display_handicap(bet.players.first) %>
-            <%= bet.players.last.user.username %>'s Pick: <%= display_pick(bet.players.last, bet.game) %>
-            <%= display_handicap(bet.players.last) %>
+            <%= image_tag(user_avatar_url(bet.initiating_user), :class => "ui avatar image") %>
+            <%= bet.initiating_user.username %>'s Pick: <%= bet.team %> <%= bet.points %> points<br />      
+            <%= image_tag(user_avatar_url(bet.receiving_user), :class => "ui avatar image") %>
+            <%= bet.receiving_user.username %>'s pick: <%= bet.receiving_user_team %> <%= bet.receiving_user_points %> points<br />
             <% if bet.game.margin.nil? %>
               Game results are pending<br />
             <% else %>
-              <%= display_winning_better(bet) %>
+              <%= bet.winner_of_bet.username %> wins the bet!
             <% end %>
           </div>
         </div>
