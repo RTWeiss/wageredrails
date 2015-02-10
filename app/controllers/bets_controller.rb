@@ -3,7 +3,7 @@ class BetsController < ApplicationController
 # before_action :correct_user, only: [:new, :create, :index]
 
   def show
-    @bet = Bet.find(params[:bet_id])
+    @bet = Bet.find(params[:id])
   end
 
   def new
@@ -30,7 +30,7 @@ class BetsController < ApplicationController
     @bets_to_review = current_user.received_bets.where("status = ?", "pending")
   end
 
-  def status
+  def update
     bet = Bet.find(params[:id])
     bet.update(status_param)
 
@@ -42,8 +42,8 @@ class BetsController < ApplicationController
   end
 
   def index
-    @initiated_bets = current_user.initiated_bets.all
-    @received_bets = current_user.received_bets.all
+    @initiated_bets = current_user.initiated_bets
+    @received_bets = current_user.received_bets
   end
 
   private
@@ -54,29 +54,5 @@ class BetsController < ApplicationController
 
   def status_param
     params.require(:bet).permit(:status)
-  end
-
-  def current_user
-    if (user_id = session[:user_id])
-      @current_user ||= User.find_by(id: user_id)
-    elsif (user_id = cookies.signed[:user_id])
-      user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token])
-        @current_user = user
-      end
-    end
-  end
-
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = "Please log in."
-      redirect_to login_url
-    end
-  end
-
-  def correct_user
-    @user_present = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user_present)
   end
 end

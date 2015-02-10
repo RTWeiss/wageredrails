@@ -10,8 +10,9 @@ Rails.application.routes.draw do
   get 'history', to: 'bets#index'
   get 'users/:user_id/games/:game_id/bets/new', to: 'bets#new'
   post 'users/:user_id/games/:game_id/bets', to: 'bets#create'
+  get 'bets/show', to: 'bets#show'
   get 'bets/review', to: 'bets#review'
-  post 'bets/:id/status', to: 'bets#status' 
+  post 'bets/:id/update', to: 'bets#update' 
   get 'images/new' => 'images#new'
   post 'images' => 'images#create'
 

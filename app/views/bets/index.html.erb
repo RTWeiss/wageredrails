@@ -2,7 +2,7 @@
   <div class="ui sixteen wide column">
     <h2 class="ui header">Bets Index</h2>
     <h4 class="ui header">Initiated Bets
-      <div class="sub header">Count: <%= initiated_bets.count %></div></h4>
+      <div class="sub header">Count: <%= @initiated_bets.count %></div></h4>
     <div class="ui relaxed list">
       <% @initiated_bets.each do |bet| %>
         <div class="ui raised segment">

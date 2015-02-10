@@ -1,7 +1,4 @@
-require 'bcrypt'
-
 class User < ActiveRecord::Base
-  include BCrypt 
 
   has_many :comments
   has_many :initiated_bets,
