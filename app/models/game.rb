@@ -5,7 +5,7 @@ class Game < ActiveRecord::Base
   validates :away_team, presence: true
   
   # method that determines the winning team for a game
-  def victorious_team
+  def winner
     if home_final_score > away_final_score
       home_team
     elsif away_final_score > home_final_score

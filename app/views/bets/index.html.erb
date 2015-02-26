@@ -1,5 +1,5 @@
 <div class="ui page grid">
-  <div class="ui sixteen wide column">
+  <div class="sixteen wide column">
     <h2 class="ui header">Bets Index</h2>
     <h4 class="ui header">Initiated Bets
       <div class="sub header">Count: <%= @initiated_bets.count %></div></h4>
@@ -8,22 +8,39 @@
         <div class="ui raised segment">
           <div class="item">
             <a href="/bets/<%= bet.id %>">Bet # <%= bet.id %></a><br />
-            Bet Status: <%= bet.status %><br />
+            Bet Status: <%= bet.status.capitalize %><br />
             Bet Amount: $ <%= bet.amount %><br />
             <% if bet.game.margin.nil? %>
               <%= display_matchup(bet.game) %><br />
               <%= format_date(bet.game.date) %> at <%= bet.game.time %><br />
             <% else %>
-              <%= bet.game.home_team %>: <%= bet.game.home_final_score %><br />
-              <%= bet.game.away_team %>: <%= bet.game.away_final_score %><br />
-              Margin of victory: <%= bet.game.margin %><br />
+              <div class="ui segment">
+                <div class="ui two column grid">
+                  <div class="center aligned column">
+                    <div class="ui horizontal segment">
+                      <%= bet.game.home_team %>
+                    </div>
+                    <div class="ui horizontal segment">
+                      <%= bet.game.home_final_score %>
+                    </div>
+                  </div>
+                  <div class="center aligned column">
+                    <div class="ui horizontal segment">
+                      <%= bet.game.away_team %>
+                    </div>
+                    <div class="ui horizontal segment">
+                      <%= bet.game.away_final_score %>
+                    </div>
+                  </div>
+                </div>
+              </div>
             <% end %>
             <%= image_tag(user_avatar_url(bet.initiating_user), :class => "ui avatar image") %>
             <%= bet.initiating_user.username %>'s Pick: <%= bet.team %> <%= bet.points %> points<br />      
             <%= image_tag(user_avatar_url(bet.receiving_user), :class => "ui avatar image") %>
-            <%= bet.receiving_user.username %>'s pick: <%= bet.receiving_user_team %> <%= bet.receiving_user_points %> points
+            <%= bet.receiving_user.username %>'s pick: <%= bet.receiving_user_team %> <%= bet.receiving_user_points %> points<br />
             <% if bet.game.margin.nil? %> 
-              Game results are pending<br />
+              Bet outcome pending game results<br />
             <% else %>
               <%= bet.winner_of_bet.username %> wins the bet!
             <% end %>      
@@ -54,7 +71,7 @@
             <%= image_tag(user_avatar_url(bet.receiving_user), :class => "ui avatar image") %>
             <%= bet.receiving_user.username %>'s pick: <%= bet.receiving_user_team %> <%= bet.receiving_user_points %> points<br />
             <% if bet.game.margin.nil? %>
-              Game results are pending<br />
+              Bet outcome pending game results<br />
             <% else %>
               <%= bet.winner_of_bet.username %> wins the bet!
             <% end %>

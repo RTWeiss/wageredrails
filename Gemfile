@@ -36,7 +36,7 @@ gem 'will_paginate', '3.0.7'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'debugger'
+#  gem 'debugger'
   gem 'better_errors'
 
   # Access an IRB console on exception pages or by using <%= console %> in views

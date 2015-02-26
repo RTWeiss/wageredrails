@@ -1,6 +1,6 @@
 class BetsController < ApplicationController
   before_action :logged_in_user, only: [:show, :new, :create, :index]
-# before_action :correct_user, only: [:new, :create, :index]
+#  before_action :correct_user, only: [:new, :create, :index]
 
   def show
     @bet = Bet.find(params[:id])
@@ -27,7 +27,8 @@ class BetsController < ApplicationController
   end
 
   def review
-    @bets_to_review = current_user.received_bets.where("status = ?", "pending")
+  #  @bets_to_review = current_user.received_bets.where("status = ?", "pending")
+    @bets_to_review = current_user.received_bets.pending
   end
 
   def update
