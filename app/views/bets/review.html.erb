@@ -1,0 +1,35 @@
+<h3 class="ui block header">Received Bets- Pending Response
+<div class="sub header">Current #: <%= @bets_to_review.count %></div></h3> 
+<div class="ui page grid">
+  <div class="sixteen wide column">
+    <div class="ui relaxed list"> 
+      <% @bets_to_review.each do |bet| %>
+        <div class="item">
+          <div class="ui segment">
+            <h4 class="ui left aligned header">Bet Opponent:
+              <img class="ui avatar image" src="<%= user_avatar_url(bet.initiating_user) %>">
+              <%= bet.initiating_user.username %>
+            </h4>
+            <h4 class="ui center aligned header"><%= bet.game.away_team %> at <%= bet.game.home_team %>
+              <div class="sub header"><%= format_date(bet.game.date) %></div></h4>
+            <h5 class="ui left aligned header">
+            <%= bet.initiating_user.username %>'s Pick: <%= bet.team %> <%= bet.points %></h5>
+            <h5 class="ui left aligned header"> Your Pick: <%= bet.receiving_user_team %> <%= bet.receiving_user_points %></h5>
+            <h5 class="ui left aligned header">Bet Amount: $ <%= bet.amount %></h5>
+            <form name="bet_review" action="/bets/<%= bet.id %>" method="post" class="ui form">
+              <input type="hidden" name="_method" value="put">
+              <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+              <div class="field">
+                <select name="bet[status]">
+                  <option value="accepted">Accept Bet</option>
+                  <option value="rejected">Reject Bet</option>
+                </select>
+              </div>
+                <input type="submit" value="Submit"class="ui blue button"></input>
+            </form>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>   
