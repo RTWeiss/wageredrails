@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150209222454) do
+ActiveRecord::Schema.define(version: 20150302043922) do
 
   create_table "bets", force: :cascade do |t|
     t.integer  "amount"
@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(version: 20150209222454) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "images", ["user_id"], name: "index_images_on_user_id"
+  add_index "images", ["user_id"], name: "index_images_on_user_id", unique: true
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

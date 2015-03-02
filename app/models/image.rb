@@ -4,6 +4,7 @@ class Image < ActiveRecord::Base
   mount_uploader :source, ImageUploader
   validates_presence_of :source,
   :message => "You did not choose a file to upload."
+  validates :user, uniqueness: true
 
   before_validation :set_created_at
 

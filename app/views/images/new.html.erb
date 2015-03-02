@@ -1,12 +1,11 @@
-<h1>Upload an Image</h1>
+<div class="ui centered grid">  
+  <div class="twelve wide column">
+    <h1 class="ui header">Upload an Image</h1>
 
-<%= form_for(@image) do |f| %>
-  <h3> Select an Image</h3>
-
-  <div>
-    <%= f.file_field :source %>
+    <%= form_for(@image, :html => {:class => "ui raised form segment"}) do |f| %>
+      <h4 class="ui header"> Select an Image</h3>
+      <%= f.file_field :source, :class => "field" %>  
+      <%= f.submit "Upload Image", { id: "commit", :class =>"ui blue button"} %>
+    <% end %>
   </div>
-
-  <div><%= f.submit "Upload Image!", { id: "commit" } %></div>
-
- <% end %>
+</div>  
