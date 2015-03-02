@@ -6,13 +6,14 @@ class CommentsController < ApplicationController
   end
 
   def create 
-    @bet = Bet.find(params[:bet_id])
+    @bet = Bet.find(params[:id])
     @comment = @bet.comments.create(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       flash[:notice] = "Comment created"
       redirect_to :back
     else
+      flash[:notice] = "Comment failed to save!"
       redirect_to :back
     end
   end

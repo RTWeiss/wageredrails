@@ -1,5 +1,5 @@
 <div class="ui page grid">
-  <div class="ui sixteen wide column">
+  <div class="fourteen wide column">
     <h3 class="ui header"> Bet # <%= @bet.id %></h3>
     <div class="ui raised segment">
       <h5 class="ui center aligned header"><%= @bet.receiving_user.username %> vs <%= @bet.initiating_user.username %></h5>
@@ -7,7 +7,7 @@
       Bet Amount: $ <%= @bet.amount %><br />
       <% if @bet.game.margin.nil? %>
         <%= display_matchup(@bet.game) %>
-        <%= format_date(@bet.game.date) %> at <%= @bet.game.time %>
+        <%= format_date(@bet.game.date) %> at <%= @bet.game.time %><br />
       <% else %>
         <div class="ui segment">
           <div class="ui two column grid">
@@ -29,12 +29,11 @@
             </div>
           </div>
         </div>
-        
         Margin of Victory: <%= @bet.game.margin %> points
         </p>
       <% end %>
       <%= image_tag(user_avatar_url(@bet.initiating_user), :class => "ui avatar image") %>
-      <%= @bet.initiating_user.username %>'s Pick: <%= @bet.team %> <%= @bet.points %> points<br />      
+      <%= @bet.initiating_user.username %>'s Pick: <%= @bet.team %> <%= @bet.points %> points<br />
       <%= image_tag(user_avatar_url(@bet.receiving_user), :class => "ui avatar image") %>
       <%= @bet.receiving_user.username %>'s pick: <%= @bet.receiving_user_team %> <%= @bet.receiving_user_points %> points<br />
       <% if @bet.game.margin.nil? %>
@@ -43,16 +42,20 @@
         <%= @bet.winner_of_bet.username %> wins the bet!
       <% end %>
     </div>
-    <div class="ui raised segment">
-      <h4 class="ui center aligned header">Comments</h4>
-      <div class="ui relaxed list">
-        <% @bet.comments.each do |comment| %>
-          <div class="item">
-            <%= comment.user.username %>: <%= comment.content %>
-          </div>
-        <% end %>
+    <div class="ui centered column">
+      <div class="ui raised segment">
+        <h4 class="ui header">Comments</h4>
+        <div class="ui relaxed list">
+          <% @bet.comments.each do |comment| %>
+            <div class="item">
+              <%= comment.user.username %>: <%= comment.content %>
+            </div>
+          <% end %>
+        </div>
+        <div class="ui raised segment">
+          <%= render partial: "shared/comment", locals: {bet: @bet} %>
+        </div>
       </div>
-      <%= render partial: "shared/comment", locals: {bet: @bet} %>
-    </div>    
+    </div>
   </div>
 </div>
