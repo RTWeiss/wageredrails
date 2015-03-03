@@ -1,3 +1,5 @@
+# controller for comments
+
 class CommentsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create]
 
@@ -5,7 +7,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
   end
 
-  def create 
+  def create
     @bet = Bet.find(params[:id])
     @comment = @bet.comments.create(comment_params)
     @comment.user_id = current_user.id
@@ -19,7 +21,7 @@ class CommentsController < ApplicationController
   end
 
 
-  private 
+  private
 
   def comment_params
     params.require(:comment).permit(:content)

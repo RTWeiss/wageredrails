@@ -1,21 +1,7 @@
 module BetsHelper
 
-  def display_winning_better(bet)
-    if current_user == bet.winner_of_bet && bet.status == "accepted"
-      content_tag(:p, "Bet Outcome: You have won this bet!")
-    elsif current_user == bet.winner_of_bet && bet.status == "rejected"
-      content_tag(:p, "Bet Outcome: You would have won this bet!")
-    elsif current_user!= bet.winner_of_bet && bet.status == "accepted"
-      content_tag(:p, "Bet outcome: You have lost this bet!")
-    elsif current_user != bet.winner_of_bet && bet.status == "rejected"
-      content_tag(:p, "Bet outcome: You would have lot this bet! Luckily it was rejected")
-    elsif bet.status == "pending"
-      content_tag(:p, "This bet never received a response!")
-    end
-  end
-
   def game_info_display(game)
-    if game.margin.nil? 
+    if game.margin.nil?
       content_tag(:div, "#{game.away_team} vs #{game.home_team}", class: ["strong"])
     else
       content_tag(:div, "#{game.home_team} #{game.home_final_score}, #{game.away_team} #{game.away_final_score}", class: ["strong"])

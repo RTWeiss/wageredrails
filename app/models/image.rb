@@ -13,7 +13,7 @@ class Image < ActiveRecord::Base
   end
 
   def icon40_url
-    self.source.icon40.url 
+    self.source.icon40.url
   end
 
   def icon60_url

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   put 'bets/:id', to: 'bets#update'
   patch 'bets/:id', to: 'bets#update'
   get 'bets/:id', to: 'bets#show'
-  post 'bets/:id/comments' => 'comments#create' 
+  post 'bets/:id/comments' => 'comments#create'
   get 'images/new' => 'images#new'
   post 'images' => 'images#create'
 end

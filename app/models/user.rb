@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
     :class_name => "Bet",
     :foreign_key => "initiating_user_id"
 
-  has_many :received_bets, 
+  has_many :received_bets,
     :class_name => "Bet",
     :foreign_key => "receiving_user_id"
     

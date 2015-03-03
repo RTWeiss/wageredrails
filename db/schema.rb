@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302043922) do
+ActiveRecord::Schema.define(version: 20150303043808) do
 
   create_table "bets", force: :cascade do |t|
-    t.integer  "amount"
+    t.integer  "amount",                                 null: false
     t.string   "status",             default: "pending"
-    t.integer  "game_id"
+    t.integer  "game_id",                                null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
-    t.float    "points"
-    t.string   "team"
-    t.integer  "initiating_user_id"
-    t.integer  "receiving_user_id"
+    t.float    "points",                                 null: false
+    t.string   "team",                                   null: false
+    t.integer  "initiating_user_id",                     null: false
+    t.integer  "receiving_user_id",                      null: false
   end
 
   add_index "bets", ["game_id"], name: "index_bets_on_game_id"
@@ -30,9 +30,9 @@ ActiveRecord::Schema.define(version: 20150302043922) do
   add_index "bets", ["receiving_user_id"], name: "index_bets_on_receiving_user_id"
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "bet_id"
-    t.string   "content"
+    t.integer  "user_id",    null: false
+    t.integer  "bet_id",     null: false
+    t.string   "content",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20150302043922) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string   "source"
-    t.integer  "user_id"
+    t.string   "source",     null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -62,9 +62,9 @@ ActiveRecord::Schema.define(version: 20150302043922) do
   add_index "images", ["user_id"], name: "index_images_on_user_id", unique: true
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "username"
-    t.string   "name"
+    t.string   "email",                           null: false
+    t.string   "username",                        null: false
+    t.string   "name",                            null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.string   "password_digest"

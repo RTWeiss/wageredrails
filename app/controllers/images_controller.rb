@@ -6,21 +6,21 @@ class ImagesController < ApplicationController
     @image = Image.new
   end
 
-  def create 
+  def create
     @image = Image.create(safe_image_params)
     @image.user_id = current_user.id
     @image.save
     
     if @image.persisted?
       flash[:notice] = "Image uploaded!"
-      redirect_to "/" 
+      redirect_to "/"
     else
       flash[:notice] = "Image upload failed!"
       render :new
     end
   end
 
-  private 
+  private
 
   def safe_image_params
     params.require(:image).permit(:source)

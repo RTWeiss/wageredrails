@@ -27,7 +27,6 @@ class BetsController < ApplicationController
   end
 
   def review
-  #  @bets_to_review = current_user.received_bets.where("status = ?", "pending")
     @bets_to_review = current_user.received_bets.pending
   end
 
