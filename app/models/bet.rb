@@ -10,16 +10,17 @@ class Bet < ActiveRecord::Base
   def winner_of_bet
     game_winner = self.game.winner
     margin = self.game.margin
+    margin_plus_points = margin + points
 
-    if game_winner == team && margin + points > 0
+    if game_winner == team && margin_plus_points > 0
       initiating_user
-    elsif game_winner == team && margin + points < 0
+    elsif game_winner == team && margin_plus_points < 0
       receiving_user
-    elsif game_winner == team && margin + points == 0
+    elsif game_winner == team && margin_plus_points == 0
       :tie
-    elsif game_winner != team  && margin + points < 0
+    elsif game_winner != team  && margin_plus_points < 0
       initiating_user
-    elsif game_winner != team && margin + points > 0
+    elsif game_winner != team && margin_plus_points > 0
       receiving_user
     elsif game_winner != team && margin + points == 0
       :tie
