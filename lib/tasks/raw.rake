@@ -74,7 +74,5 @@ namespace :routes do
     result_array = result_string.split("1")
     routes_only = result_array.drop(5)
     p routes_only[0]
-    
-
   end
 end
