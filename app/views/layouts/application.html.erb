@@ -21,9 +21,41 @@
   </script>
 </head>
 <body>
-  <% flash.each do |message_type, message| %>
-    <%= content_tag(:div, message) %>
-  <% end %>
+<div class="ui inverted segment">
+  <div class="ui centered page grid">
+    <div class="column">
+      <div class="ui inverted blue menu">
+        <div class="header item"><a href="/">Wagered2</a></div>
+        <div class="right menu">
+          <%= link_to "Make a Bet", games_path, { method: "get", class: "item" } %>
+          <% if logged_in? %>
+            <%= link_to "Received Bets", bets_review_path, { method: "get", class: "item" } %>
+            <%= link_to "Bets History", history_path, { method: "get", class: "item" } %>
+            <div class="ui dropdown item">
+              <i class="dropdown icon"></i>
+              <div class="menu">
+                <a href="/users/<%= current_user.id %>/edit" class="item">Edit Account</a>
+                <a href="/users/<%= current_user.id %>" class="item">View Profile</a>
+                <%= link_to "Log out", logout_path, { method: "delete", :class => "item" } %>
+              </div>
+            </div>
+          <% else %>
+            <%= link_to "Log in", login_path, { method: "get", class: "item" } %>
+          <% end %> 
+        </div>
+        <script type="text/javascript">
+          $('.ui.dropdown')
+            .dropdown()
+          ;
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, message) %>
+<% end %>
 
 <%= yield %>
 

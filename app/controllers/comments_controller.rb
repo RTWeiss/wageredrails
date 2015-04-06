@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
   def create
     @bet = Bet.find(params[:id])
-    @comment = @bet.comments.create(comment_params)
+    @comment = @bet.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
       flash[:notice] = "Comment created"

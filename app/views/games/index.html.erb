@@ -1,8 +1,8 @@
 <% provide(:title, 'Games List') %>
-<h2 class="ui block header"> All Games </h2>
 
-<div class="ui page grid">
-  <div class="twelve wide column">
+<div class="ui page centered grid">
+  <div class="fourteen wide column">
+    <h2 class="ui header"> All Games </h2>
     <% @games.each do |game| %>
       <div class="ui center aligned segment">
        <h3 class="ui header"><%= game.away_team %> at <%= game.home_team %>
@@ -30,6 +30,3 @@
     <% end %>
   </div>
 </div>
-
-
-<%= link_to "Log out", logout_path, method: "delete" %>
