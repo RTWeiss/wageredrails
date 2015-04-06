@@ -16,6 +16,10 @@ module BetsHelper
     date.strftime("%B %e, %Y")
   end
 
+  def format_date_short(date)
+    date.strftime("%m/%d/%Y")
+  end
+
   def display_score(game)
     content_tag(:div, "#{game.away_team} #{game.away_final_score}, #{game.home_team} #{game.home_final_score}", class: ["strong"])
   end

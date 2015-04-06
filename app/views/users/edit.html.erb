@@ -1,20 +1,31 @@
-<% provide(:title, "Edit User") %>
-<h1>Update your profile </h1>
+<% provide(:title, "Edit Account") %>
 
-<%= form_for(@user) do |f| %>
-  <%= render 'shared/error_messages' %>
+<div class="ui centered page grid">
+  <div class="fourteen wide column">
+    <h1 class="ui header">Update Account </h1>
 
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+    <%= form_for(@user, :html => { :class => "ui raised form segment"} ) do |f| %>
+      <%= render 'shared/error_messages' %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+      <%= f.label :email %>
+      <%= f.email_field :email %>
 
-  <%= f.submit "Save changes" %>
-<% end %>
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Save changes", :class => "ui blue button" %>
+    <% end %>
+
+    <a href="/images/new">Add image</a>
+
+  </div>
+</div>

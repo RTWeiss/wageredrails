@@ -1,9 +1,9 @@
-<h1> Game View </h1>
+<h1 class="ui header"> Game View </h1>
+<div class="ui raised segment">
+  <%= @game.away_team %> at <%= @game.home_team %>
+  <%= @game.date %> at <%= @game.time %>
 
-<h2> <%= @game.away_team %> at <%= @game.home_team %></h2>
-<h3><%= @game.date %> at <%= @game.time %></h3>
-<h3> Final Score:</h3>
-<h2><%= @game.away_team %> : <%= @game.away_final_score %></h2>
+  Away: <%= @game.away_team %> : <%= @game.away_final_score %>
 
-<h2><%= @game.home_team %> : <%= @game.home_final_score %></h2>
-
+  Home <%= @game.home_team %> : <%= @game.home_final_score %>
+</div>
