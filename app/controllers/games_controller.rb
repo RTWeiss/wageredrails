@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :logged_in_user, only: [:index, :show, :new, :create, :edit, :update]
+  before_action :authenticate_user!, only: [:index, :new, :create, :edit, :update]
   before_action :admin_user, only: [:new, :create, :edit, :update]
 
   def index

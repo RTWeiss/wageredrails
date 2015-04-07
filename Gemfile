@@ -28,6 +28,8 @@ gem 'carrierwave-aws'
 gem 'mini_magick'
 gem 'faker', '1.4.2'
 gem 'will_paginate', '3.0.7'
+gem 'devise'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

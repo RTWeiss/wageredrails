@@ -1,7 +1,7 @@
 # controller for comments
 
 class CommentsController < ApplicationController
-  before_action :logged_in_user, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
 
   def new
     @comment = Comment.new
