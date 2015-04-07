@@ -1,5 +1,5 @@
 class BetsController < ApplicationController
-  before_action :logged_in_user, only: [:show, :new, :create, :index]
+  before_action :authenticate_user!, only: [:show, :new, :create, :index]
 #  before_action :correct_user, only: [:new, :create, :index]
 
   def show

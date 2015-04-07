@@ -51,7 +51,7 @@ RSpec.describe User do
 
     it "ensures minimum password length" do
       user = User.create(email: "molinethedream@example.com", username: "50 cent", name: "alex", password: "bo")
-      expect(user).to ensure_length_of(:password).is_at_least(6)
+      expect(user).to ensure_length_of(:password).is_at_least(8)
     end
   end
 end

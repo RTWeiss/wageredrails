@@ -1,0 +1,20 @@
+<div class="ui centered page grid">
+  <div class="fourteen wide column">   
+    <h3 class="ui header">Resend unlock instructions</h3>
+
+    <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post, :class => "ui form segment" }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Resend unlock instructions" %>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+  </div>
+</div>
