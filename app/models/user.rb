@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessor :remember_token
 
   has_many :comments
   has_many :initiated_bets,
@@ -10,8 +11,6 @@ class User < ActiveRecord::Base
     :foreign_key => "receiving_user_id"
     
   has_one :image
-
-  attr_accessor :remember_token
 
   before_save { self.email = email.downcase }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

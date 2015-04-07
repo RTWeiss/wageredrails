@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  resources :users
+
   resources :games
+  resources :users
 
   get 'history', to: 'bets#index'
   get 'users/:user_id/games/:game_id/bets/new', to: 'bets#new'

@@ -1,10 +1,12 @@
-
+<div class="ui centered page grid">
+  <div class="row"></div>
+  <div class="row"></div>
   <div class="ui vertical segment">
-    <div class="ui page grid">
-      <button class="ui large inverted blue button">
+    <% if logged_in? %>
+    <% else %>
+      <a href="/users/new" class="ui large inverted blue button">
         Sign up!
-      </button>
-    </div>
-    <div class="row">
-    </div>
+      </a>
+    <% end %>
   </div>
+</div>  
