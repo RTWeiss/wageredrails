@@ -23,6 +23,7 @@ module Wagered2
 
     # add app/assets/fonts to asset path
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
+    config.assets.precompile += %w( .svg .eot .woff .tff)
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true

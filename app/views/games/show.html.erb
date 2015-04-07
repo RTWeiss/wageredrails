@@ -1,9 +1,22 @@
-<h1 class="ui header"> Game View </h1>
-<div class="ui raised segment">
-  <%= @game.away_team %> at <%= @game.home_team %>
-  <%= @game.date %> at <%= @game.time %>
-
-  Away: <%= @game.away_team %> : <%= @game.away_final_score %>
-
-  Home <%= @game.home_team %> : <%= @game.home_final_score %>
+<div class="ui centered page grid">
+  <div class="fourteen wide column">
+    <h2 class="ui header"> Game View </h2>
+    <div class="ui raised segment">
+      <h4 class="ui center aligned header"><%= @game.away_team %> at <%= @game.home_team %>
+        <div class="sub header">
+          <%= format_date(@game.date) %> at <%= @game.time %>
+        </div>
+      </h4>
+      <div class="ui two column grid">
+        <div class="center aligned column">
+          <h3 class="ui header"><%= @game.home_team %><br />
+          <%= @game.home_final_score %></h3>
+        </div>
+        <div class="center aligned column">
+          <h3 class="ui header"><%= @game.away_team %><br />
+          <%= @game.away_final_score %></h3>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
