@@ -29,7 +29,7 @@ RSpec.describe Comment do
 
     it "does not allow an empty value for user_id" do
       comment = Comment.create(user_id: "", bet_id: 2, content: "hibbbbidy zibbbidy")
-      expect(comment.errors).to have_key(:user_id)
+      expect(comment).to_not be_persisted
     end
 
   end

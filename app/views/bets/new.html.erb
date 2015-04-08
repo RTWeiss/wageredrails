@@ -1,27 +1,32 @@
-<div class="ui centered page grid">
-  <div class="fourteen wide column">
-    <h3 class="ui header">Create Bet</h3>
-    <h3 class="ui center aligned header"><%= @game.away_team %> at <%= @game.home_team %>
-      <div class="sub header"><%= format_date(@game.date) %> at <%= @game.time %></div>
-    </h3>
+<div class="ui centered padded page grid">
+  <div class="twelve wide column">
+    <h3 class="ui header">Create New Bet</h3>
+   
     <form name="create_bet" action="/users/<%= @user.id %>/games/<%= @game.id %>/bets" method="post" class="ui form segment">
       <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+
+        <h3 class="ui center aligned header"><%= @game.away_team %> at <%= @game.home_team %>
+          <div class="sub header"><%= format_date(@game.date) %> at <%= @game.time %>
+          </div>
+        </h3>
 
       <h3 class="ui header">Bet Opponent: 
       <%= image_tag(user_avatar_url(@user), :class => "ui avatar image") %>
       <%= @user.username %></h3>
-      <label>Your pick: 
+      <label>Your pick 
         <select name="bet[team]">
           <option value="<%= @game.home_team %>"><%= @game.home_team %></option>
           <option value="<%= @game.away_team %>"><%= @game.away_team %></option>
         </select>
       </label>
-      <label class="field">Points:
-        <input type="text" name="bet[points]"/>
-      </label>
-      <label class="field">Bet Amount:
-        <input type="text" name="bet[amount]" />
-      </label><br />
+      <div class="two fields">
+        <label class="field">Points
+          <input type="text" name="bet[points]"/>
+        </label>
+        <label class="field">Bet Amount
+          <input type="text" name="bet[amount]" />
+        </label><br />
+      </div>
         <input type="submit" value="Submit Bet"class="ui blue button"></input>
     </form>
   </div>

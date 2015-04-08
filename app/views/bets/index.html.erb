@@ -1,9 +1,9 @@
-<div class="ui page centered grid">
-  <div class="fourteen wide column">
-    <h2 class="ui header">Bet Index</h2>
+<div class="ui padded grid">
+  <div class="sixteen wide column">
+    <h2 class="ui header">Bet History</h2>
     <h4 class="ui header">Initiated Bets:
       <div class="sub header">Count: <%= @initiated_bets.count %></div></h4>
-    <table class="ui table">
+    <table class="ui striped table">
       <thead>
         <tr>
           <th>Id</th>
@@ -50,9 +50,9 @@
       </tbody>
     </table>
   </div>
-  <div class="fourteen wide column">
+  <div class="sixteen wide column">
     <h4 class="ui header">Received Bets: <div class="sub header">Count: <%= @received_bets.count %></div></h4>
-    <table class="ui table">
+    <table class="ui striped table">
       <thead>
         <tr>
           <th>Id</th>
