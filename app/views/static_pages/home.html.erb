@@ -8,7 +8,9 @@
   <div class="twelve wide column">
     <% if user_signed_in? %>
     <% else %>
-      <a href="/users/sign_up" class="ui large blue button">Sign up!</a>
+      <div class="ui center aligned vertical segment">
+        <a href="/users/sign_up" class="ui large blue button">Sign up!</a>
+      </div>
     <% end %>
   </div>
   <div class="fifteen wide column">
@@ -63,4 +65,3 @@
     </div>
   </div>
 </div>
-
