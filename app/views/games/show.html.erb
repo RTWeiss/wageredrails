@@ -1,13 +1,13 @@
-<div class="ui centered page grid">
+<div class="ui centered padded page grid">
   <div class="fourteen wide column">
-    <h2 class="ui header"> Game View </h2>
+    <h3 class="ui header"> Game View </h3>
     <div class="ui raised segment">
       <h4 class="ui center aligned header"><%= @game.away_team %> at <%= @game.home_team %>
         <div class="sub header">
           <%= format_date(@game.date) %> at <%= @game.time %>
         </div>
       </h4>
-      <div class="ui two column grid">
+      <div class="ui two column very relaxed grid">
         <div class="center aligned column">
           <h3 class="ui header"><%= @game.home_team %><br />
           <%= @game.home_final_score %></h3>
