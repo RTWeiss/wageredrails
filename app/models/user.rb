@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :comments
+  
   has_many :initiated_bets,
     :class_name => "Bet",
     :foreign_key => "initiating_user_id"
