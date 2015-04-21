@@ -1,28 +1,11 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WageredRails is a user-to-user sports wagering app. Wagered allows users to select a sports event from a list of preselected matchups, and pick an user to receive a bet. The 'Initiating User'(the user who creates the bet) sets the terms of the bet (their team pick, point spread, and wager amount). The 'Receiving User' decides to either accept or reject the bet. Bet results are visable as soon the games final score updates. See it live at: https://wageredrails.herokuapp.com/
 
-Things you may want to cover:
+* Uses rails 4.2.0
 
-* Ruby version
+* RSpec
 
-* System dependencies
+* Postgresql 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Javascript
