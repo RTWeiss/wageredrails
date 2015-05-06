@@ -1,8 +1,8 @@
 <div class="ui centered padded page grid">
   <div class="twelve wide column">
-    <h3 class="ui header">Create New Bet</h3>
+    <h3 class="ui header">Initiate New Bet</h3>
    
-    <form name="create_bet" action="/users/<%= @user.id %>/games/<%= @game.id %>/bets" method="post" class="ui form segment">
+    <form name="create_bet" action="/users/<%= @user.id %>/games/<%= @game.id %>/bets" method="post" class="ui form">
       <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
 
         <h3 class="ui center aligned header"><%= @game.away_team %> at <%= @game.home_team %>

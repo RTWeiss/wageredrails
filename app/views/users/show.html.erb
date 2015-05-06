@@ -1,6 +1,8 @@
+<% provide(:title, "#{@user.name}") %>
+
 <div class="ui centered padded page grid">
   <div class="fourteen wide column">
-    <h2 class="ui block header"> <%= image_tag(user_avatar_url(@user), :class => "ui avatar image") %> <%= @user.username %> Profile</h2>
+    <h2 class="ui header"> <%= image_tag(user_avatar_url(@user), :class => "ui avatar image") %> <%= @user.username %> Profile</h2>
     <div class="ui vertical segment">
       <p>Name: <%= @user.name %><br />
         Joined: <%= @user.created_at %>
