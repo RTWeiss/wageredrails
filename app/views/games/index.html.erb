@@ -1,10 +1,10 @@
 <% provide(:title, 'Games Index') %>
 
-<div class="ui centered padded grid">
+<div class="ui padded page grid">
   <div class="fourteen wide column">
     <h2 class="ui header">Games Index </h2>
     <% @games.each do |game| %>
-      <div class="ui center aligned segment">
+      <div class="ui center aligned basic segment">
         <h4 class="ui header"><%= game.away_team %> at <%= game.home_team %>
           <div class="sub header">
             <a href="/games/<%= game.id %>"><%= format_date(game.date) %> at <%= game.time %></a>
@@ -23,8 +23,8 @@
               <% if user.id == current_user.id %>
               <% else %>
                 <div class="item">
-                 <a href="/users/<%= user.id %>/games/<%= game.id %>/bets/new"><%= user.username %></a>
-               </div>
+                  <a href="/users/<%= user.id %>/games/<%= game.id %>/bets/new"> <%= image_tag(user_avatar_url(user), :class => "ui avatar image") %> <%= user.username %></a>
+                </div>
               <% end %>
             <% end %>
           </div>
