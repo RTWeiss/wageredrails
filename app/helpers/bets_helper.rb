@@ -12,10 +12,6 @@ module BetsHelper
     content_tag(:div, "#{game.away_team} vs #{game.home_team}", class: ["strong"])
   end
 
-  def format_date(date)
-    date.strftime("%B %e, %Y")
-  end
-
   def format_date_short(date)
     date.strftime("%m/%d/%Y")
   end
@@ -30,13 +26,5 @@ module BetsHelper
 
   def away_score(game)
     content_tag(:p, "#{game.away_team}: #{game.away_final_score}")
-  end
-
-  def user_avatar_url(user)
-    if user.image
-      user.image.source.icon40.url
-    else
-      "https://s3.amazonaws.com/wagerednumerotres/images/fallback/image60_default.jpg"
-    end
   end
 end

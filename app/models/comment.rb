@@ -2,7 +2,7 @@ class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :bet
 
-  validates :content, length: { in: 4..300 }
+  validates :content, length: { in: 4..1000 }
   validates_presence_of :created_at
   before_validation :set_created_at
 
