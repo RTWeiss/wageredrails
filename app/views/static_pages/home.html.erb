@@ -1,29 +1,28 @@
 <% provide(:title, 'Home') %>
-<div class="ui basic vertical segment">
-  <div class="ui centered padded grid">
+
+<div class="ui centered padded grid">
+  <div class="row"></div>
+  <div class="row"></div>
+  <div class="sixteen wide column">
     <div class="row"></div>
-    <div class="row"></div>
-    <div class="row"></div>
-    <div class="sixteen wide column">
-      <div class="row"></div>
-      <h2 class="ui center aligned header">Start making bets now!</h2>
-    </div>
-    <div class="sixteen wide column">
-      <% if user_signed_in? %>
-      <% else %>
-        <div class="ui center aligned vertical segment">
-          <a href="/users/sign_up" class="ui large blue button">Sign up!</a>
-        </div>
-      <% end %>
-    </div>
-    <div class="row"></div>
+    <h2 class="ui center aligned header">Start making bets now!</h2>
   </div>
+  <div class="sixteen wide column">
+    <% if user_signed_in? %>
+    <% else %>
+      <div class="ui center aligned vertical segment">
+        <a href="/users/sign_up" class="ui large blue button">Sign up!</a>
+      </div>
+    <% end %>
+  </div>
+  <div class="row"></div>
 </div>
+
 
 <div class="ui padded page grid">
   <div class="column">
     <div class="ui vertical segment">
-      <div class="ui two column stackable padded grid">
+      <div class="ui two column stackable equal height relaxed vertically padded grid">
         <div class="column">
           <div class="ui basic horizontal segment">
             <div class="row">
@@ -38,9 +37,6 @@
         </div>
         <div class="column">
           <div class="ui basic horizontal segment">
-            <div class="ui center aligned icon header">
-              <i class="thumbs up icon"></i>
-              Accept or reject bets you receive!
             <div class="row">
               <div class="ui center aligned icon header">
                 <i class="thumbs up icon"></i>
@@ -57,15 +53,14 @@
 <div class="ui inverted feature segment">
   <div class="ui padded page grid">
     <div class="column">
-      <div class="ui two column stackable equal height relaxed grid">
-        <div class="row"></div>
+      <div class="ui two column stackable equal height relaxed vertically padded grid">
         <div class="column">
           <div class="ui basic inverted horizontal segment">
             <div class="ui center aligned blue icon header">
               <i class="comments icon"></i>
               Comment on bets!
             </div>
-            <p>Comment on active bets, comment once the bet results are in, or comment before you reject a bet. Receive a rediculous bet? Post a comment and tell the initiating user off!</p>
+            <p>Comment on active bets, comment once the bet results are in, or comment before you reject a bet. Receive a ridiculous bet? Post a comment and tell the initiating user off!</p>
           </div>
         </div>
         <div class="column">
@@ -74,12 +69,12 @@
               <i class="trophy icon"></i>
                 Win bets!
             </div>
-            <p>Wagered keeps track of all bets. Regardless of point spread, Wagered calculates the winner for you. Once a bet is accepted neither user can back out or attempt to change the bet.</p>
+            <p>Wagered keeps track of all bets. Regardless of point spread, Wagered calculates the winner for you. Once a bet is accepted, neither user can back out or attempt to change the bet.</p>
           </div>
         </div>
       </div>
-      <div class="row"></div>
-      <div class="row"></div>
     </div>
   </div>
+  <div class="row"></div>
+  <div class="row"></div>
 </div>
