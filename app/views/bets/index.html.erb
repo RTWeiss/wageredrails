@@ -23,20 +23,20 @@
             <td><a href="/bets/<%= bet.id %>"><%= bet.id %></a></td>
             <td>
               <% if bet.game.margin.nil? %>
-                <%= bet.game.away_team %> at <%= bet.game.home_team %></a>
+                <%= bet.game.away_team.name %> at <%= bet.game.home_team.name %></a>
                 </td>
               <% else %>
-                <%= bet.game.away_team %>: <%= bet.game.away_final_score %>,
-                <%= bet.game.home_team %>: <%= bet.game.home_final_score %>
+                <%= bet.game.away_team.name %>: <%= bet.game.away_final_score %>,
+                <%= bet.game.home_team.name %>: <%= bet.game.home_final_score %>
               <% end %>
             </td>
             <td>
               <%= bet.initiating_user.username %>:
-               <%= bet.team %> <%= bet.points %> points
+               <%= bet.team.name %> <%= bet.points %> points
             </td>
             <td>
               <%= bet.receiving_user.username %>:
-               <%= bet.receiving_user_team %> <%= bet.receiving_user_points %> points
+               <%= bet.receiving_user_team.name %> <%= bet.receiving_user_points %> points
             </td>
             <td>$ <%= bet.amount %></td>
             <td><%= bet.status.capitalize %></td>

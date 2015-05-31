@@ -3,18 +3,18 @@
 <div class="ui centered padded page grid">
   <div class="twelve wide column">
     <div class="ui raised segment">
-      <h4 class="ui center aligned header"><%= @game.away_team %> at <%= @game.home_team %>
+      <h4 class="ui center aligned header"><%= @game.away_team.name %> at <%= @game.home_team.name %>
         <div class="sub header">
           <%= format_date(@game.date) %> at <%= @game.time %>
         </div>
       </h4>
       <div class="ui two column very relaxed grid">
         <div class="center aligned column">
-          <h3 class="ui header"><%= @game.home_team %><br />
+          <h3 class="ui header"><%= @game.home_team.name %><br />
           <%= @game.home_final_score %></h3>
         </div>
         <div class="center aligned column">
-          <h3 class="ui header"><%= @game.away_team %><br />
+          <h3 class="ui header"><%= @game.away_team.name %><br />
           <%= @game.away_final_score %></h3>
         </div>
       </div>

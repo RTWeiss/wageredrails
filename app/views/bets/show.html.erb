@@ -9,7 +9,7 @@
       Bet Amount: $ <%= @bet.amount %><br />
 
       <% if @bet.game.margin.nil? %>
-        <h5 class="ui centered header"><%= @bet.game.home_team %> at <%= @bet.game.away_team %>
+        <h5 class="ui centered header"><%= @bet.game.home_team.name %> at <%= @bet.game.away_team.name %>
           <div class="sub header"><%= format_date(@bet.game.date) %> at <%= @bet.game.time %></div>
         </h5>
       <% else %>
@@ -17,7 +17,7 @@
           <div class="ui two column grid">
             <div class="center aligned column">
               <div class="ui horizontal segment">
-                <%= @bet.game.away_team %>
+                <%= @bet.game.away_team.name %>
               </div>
               <div class="ui horizontal segment">
                 <%= @bet.game.away_final_score %>
@@ -25,7 +25,7 @@
             </div>
             <div class="center aligned column">
               <div class="ui horizontal segment">
-                <%= @bet.game.home_team %>
+                <%= @bet.game.home_team.name %>
               </div>
               <div class="ui horizontal segment">
                 <%= @bet.game.home_final_score %>
@@ -38,11 +38,11 @@
         <div class="ui two column vertically padded grid">
           <div class="center aligned column">
             <%= image_tag(user_avatar_url(@bet.initiating_user), :class => "ui avatar image") %>
-            <%= @bet.initiating_user.username %>'s Pick: <%= @bet.team %> <%= @bet.points %> points
+            <%= @bet.initiating_user.username %>'s Pick: <%= @bet.team.name %> <%= @bet.points %> points
           </div>
           <div class="center aligned column">
             <%= image_tag(user_avatar_url(@bet.receiving_user), :class => "ui avatar image") %>
-            <%= @bet.receiving_user.username %>'s pick: <%= @bet.receiving_user_team %> <%= @bet.receiving_user_points %> points
+            <%= @bet.receiving_user.username %>'s pick: <%= @bet.receiving_user_team.name %> <%= @bet.receiving_user_points %> points
           </div>
         </div>
       <% if @bet.game.margin.nil? %>

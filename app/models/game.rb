@@ -1,10 +1,10 @@
 class Game < ActiveRecord::Base
   has_many :bets
-
-  validates :home_team, presence: true
-  validates :away_team, presence: true
   
-  # method that determines the winning team for a game
+  belongs_to :home_team, :class_name => "Team"
+  belongs_to :away_team, :class_name => "Team"
+
+  # method determines the winning team of game
   def winner
     if home_final_score > away_final_score
       home_team
@@ -13,5 +13,22 @@ class Game < ActiveRecord::Base
     else
       :tie
     end
-  end	
+  end
+
+  # method returns true when game outcome is a tie, false when game is not a tie
+  def is_tie?
+    if margin == 0
+      true
+    else
+      false
+    end
+  end
+
+  def is_not_tie?
+    if margin > 0
+      true
+    else
+      false
+    end
+  end
 end

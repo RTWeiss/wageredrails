@@ -49,7 +49,7 @@ class BetsController < ApplicationController
   private
 
   def bet_params
-    params.require(:bet).permit(:team, :points, :amount)
+    params.require(:bet).permit(:team_id, :points, :amount)
   end
 
   def status_param
