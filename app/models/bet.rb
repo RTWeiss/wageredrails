@@ -27,7 +27,7 @@ class Bet < ActiveRecord::Base
 
   # returns points scored by initiators team
   def initiators_team_score
-    if team == game.home_team
+    if team_id == game.home_team_id
       game.home_final_score
     else
       game.away_final_score
@@ -41,10 +41,10 @@ class Bet < ActiveRecord::Base
 
   # returns score of team bet on by receiver
   def team_score_of_receiver
-    if receivers_team == game.home_team
-      game.home_final_score
-    else
+    if team == game.home_team
       game.away_final_score
+    else
+      game.home_final_score
     end
   end
 
@@ -82,7 +82,7 @@ class Bet < ActiveRecord::Base
 
   # team receiving user bets on
   def receivers_team
-    if team == self.game.home_team
+    if team == game.home_team
       game.away_team
     else
       game.home_team
