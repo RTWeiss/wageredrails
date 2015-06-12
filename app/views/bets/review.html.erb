@@ -15,7 +15,7 @@
               <img class="ui avatar image" src="<%= user_avatar_url(bet.initiating_user) %>">
               <%= bet.initiating_user.username %>
             </h4>
-            <h5 class="ui center aligned header"><%= bet.game.away_team %> at <%= bet.game.home_team %>
+            <h5 class="ui center aligned header"><%= bet.game.away_team.name %> at <%= bet.game.home_team.name %>
               <div class="sub header">
                 <%= format_date(bet.game.date) %> at <%= bet.game.time %>
               </div>
@@ -25,11 +25,11 @@
               <div class="center aligned column">
                 <%= image_tag(user_avatar_url(bet.initiating_user), :class => "ui avatar image") %>
                 <%= bet.initiating_user.username %>'s Pick: 
-                <%= bet.team %> <%= bet.points %> points
+                <%= bet.team.name %> <%= bet.points %> points
               </div>
               <div class="center aligned column">
                 <%= image_tag(user_avatar_url(bet.receiving_user), :class => "ui avatar image") %>
-                Your Pick: <%= bet.receiving_user_team %> <%= bet.receiving_user_points %> points
+                Your Pick: <%= bet.receivers_team.name %> <%= bet.receiving_user_points %> points
               </div>
             </div>
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407021509) do
+ActiveRecord::Schema.define(version: 20150528092314) do
 
   create_table "bets", force: :cascade do |t|
     t.integer  "amount",                                 null: false
@@ -20,14 +20,15 @@ ActiveRecord::Schema.define(version: 20150407021509) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.float    "points",                                 null: false
-    t.string   "team",                                   null: false
     t.integer  "initiating_user_id",                     null: false
     t.integer  "receiving_user_id",                      null: false
+    t.integer  "team_id"
   end
 
   add_index "bets", ["game_id"], name: "index_bets_on_game_id"
   add_index "bets", ["initiating_user_id"], name: "index_bets_on_initiating_user_id"
   add_index "bets", ["receiving_user_id"], name: "index_bets_on_receiving_user_id"
+  add_index "bets", ["team_id"], name: "index_bets_on_team_id"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    null: false
@@ -43,13 +44,13 @@ ActiveRecord::Schema.define(version: 20150407021509) do
   create_table "games", force: :cascade do |t|
     t.date     "date"
     t.string   "time"
-    t.string   "home_team"
-    t.string   "away_team"
     t.integer  "home_final_score", default: 0
     t.integer  "away_final_score", default: 0
     t.integer  "margin"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "home_team_id"
+    t.integer  "away_team_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -60,6 +61,11 @@ ActiveRecord::Schema.define(version: 20150407021509) do
   end
 
   add_index "images", ["user_id"], name: "index_images_on_user_id", unique: true
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.string "logo_url"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                                  null: false
