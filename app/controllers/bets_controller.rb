@@ -27,7 +27,7 @@ class BetsController < ApplicationController
   end
 
   def review
-    @bets_to_review = current_user.received_bets.pending
+    @bets_to_review = current_user.received_bets.pending.includes(:initiating_user, :game, :team, :receiving_user)
   end
 
   def update
@@ -42,8 +42,8 @@ class BetsController < ApplicationController
   end
 
   def index
-    @initiated_bets = current_user.initiated_bets
-    @received_bets = current_user.received_bets
+    @initiated_bets = current_user.initiated_bets.includes(:team, :receiving_user, :initiating_user, game: [:away_team, :home_team])
+    @received_bets = current_user.received_bets.includes(:team, :receiving_user, :initiating_user, game: [:away_team, :home_team])
   end
 
   private

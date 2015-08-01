@@ -35,6 +35,9 @@ gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+group :development do
+  gem 'bullet'
+end
 
 group :development, :test do
   gem 'sqlite3'

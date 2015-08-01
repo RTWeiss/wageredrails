@@ -16,7 +16,7 @@ RSpec.feature 'User sign up:', :type => :feature do
     end
   end
 
-  describe 'User submits password confirmation doesnt match' do
+  describe 'Invalid submission: password confirmation doesnt match' do
     it 'displays error message to user' do
       visit '/users/sign_up'
       fill_in 'user_email', :with => 'timmytacuba@example.com'

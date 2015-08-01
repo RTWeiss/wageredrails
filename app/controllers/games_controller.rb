@@ -4,7 +4,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.where("home_final_score = ? AND away_final_score = ?", 0, 0)
-    @users = User.all
+    @users = User.all.includes(:image)
   end
 
   def show
