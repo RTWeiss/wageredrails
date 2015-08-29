@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.0'
 gem 'dotenv-rails', :groups => [:development, :test]
 
@@ -29,6 +28,8 @@ gem 'mini_magick'
 gem 'faker', '1.4.2'
 gem 'will_paginate', '3.0.7'
 gem 'devise'
+gem 'nokogiri'
+# gem 'open-uri'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

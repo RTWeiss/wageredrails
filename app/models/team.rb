@@ -12,7 +12,4 @@ class Team < ActiveRecord::Base
   validates :name, presence: true,
   uniqueness: { case_sensitive: false }
 
-  validates :logo_url, presence: true,
-  uniqueness: { case_sensitive: false }
-
 end
