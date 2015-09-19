@@ -2,43 +2,52 @@
 
 <div class="ui padded page grid">
   <div class="sixteen wide column">
-    <h3 class="ui header">Games Index </h3>
-    <% @games.each do |game| %>
-      <div class="ui center aligned basic segment">
-        <h4 class="ui header"><%= game.away_team.name %> at <%= game.home_team.name %>
-          <div class="sub header">
-            <a href="/games/<%= game.id %>"><%= format_date(game.date) %> at <%= game.time %></a>
-          </div>
-        </h4>
-        <div class="ui floating dropdown labeled search icon button">
-          <i class="search icon"></i>
-          <span class="text">Select Receiving User</span>
-          <div class="menu">
-            <div class="header">
-              <i class="dollar icon"></i>
-              Make a bet
-            </div>
-            <div class="divider"></div>
-            <% @users.each do |user| %>
-              <% if user.id == current_user.id %>
-              <% else %>
-                <div class="item">
-                  <a href="/users/<%= user.id %>/games/<%= game.id %>/bets/new"> <%= image_tag(user_avatar_url(user), :class => "ui avatar image") %> <%= user.username %></a>
+    <table class="ui single line table">
+      <thead>
+        <tr>
+          <th>Matchup</th>
+          <th>Date</th>
+          <th>Make Bet</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @games.each do |game| %>
+          <tr>
+            <td><a href="/games/<%= game.id %>"><%= game.away_team.name %> at <%= game.home_team.name %></a></td>
+            <td><%= game.date.strftime('%m/%d/%y') %> <%= game.time %></td>
+            <td>
+              <div class="ui floating dropdown labeled search icon button">
+                <i class="search icon"></i>
+                <span class="text">Select Receiving User</span>
+                <div class="menu">
+                  <div class="header">
+                    <i class="dollar icon"></i>
+                    Make a bet
+                  </div>
+                  <div class="divider"></div>
+                  <% @users.each do |user| %>
+                    <% if user.id == current_user.id %>
+                    <% else %>
+                      <div class="item">
+                        <a href="/users/<%= user.id %>/games/<%= game.id %>/bets/new"> <%= image_tag(user_avatar_url(user), :class => "ui avatar image") %> <%= user.username %></a>
+                      </div>
+                    <% end %>
+                  <% end %>
                 </div>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-    <script type="text/javascript">
-      $(document)
-        .ready(function(){
-          $('.ui.labeled.icon.button')
-            .dropdown()
+              </div>
+            </td>
+          </tr>
+        <% end %>
+        <script type="text/javascript">
+          $(document)
+            .ready(function(){
+              $('.ui.labeled.icon.button')
+                .dropdown()
+              ;
+            })
           ;
-        })
-      ;
-    </script>
+        </script>
+      </tbody>
+    </table>
   </div>
 </div>
