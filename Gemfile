@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.2.2"
 
 gem 'rails', '4.2.0'
 gem 'dotenv-rails', :groups => [:development, :test]
@@ -25,7 +26,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem 'mini_magick'
-gem 'faker', '1.4.2'
 gem 'will_paginate', '3.0.7'
 gem 'devise'
 gem 'nokogiri'
@@ -44,6 +44,7 @@ group :development, :test do
   gem 'sqlite3'
 #  gem 'debugger'
   gem 'better_errors'
+  gem 'faker', '1.4.2'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   before_action :admin_user, only: [:new, :create, :edit, :update]
 
   def index
-    @games = Game.where(home_final_score: 0, away_final_score: 0)
+    @games = Game.where(home_final_score: 0, away_final_score: 0).where('date >= ?', DateTime.now)
     @users = User.all.includes(:image)
   end
 

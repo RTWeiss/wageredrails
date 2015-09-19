@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528092314) do
+ActiveRecord::Schema.define(version: 20150829231526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20150528092314) do
     t.datetime "updated_at",                   null: false
     t.integer  "home_team_id"
     t.integer  "away_team_id"
+    t.integer  "season_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -64,6 +65,19 @@ ActiveRecord::Schema.define(version: 20150528092314) do
   end
 
   add_index "images", ["user_id"], name: "index_images_on_user_id", unique: true, using: :btree
+
+  create_table "league", force: :cascade do |t|
+    t.integer "name"
+  end
+
+  create_table "records", force: :cascade do |t|
+    t.integer "year"
+    t.integer "wins"
+    t.integer "losses"
+    t.integer "ties"
+    t.integer "team_id"
+    t.integer "league_id"
+  end
 
   create_table "teams", force: :cascade do |t|
     t.string "name"
@@ -95,6 +109,9 @@ ActiveRecord::Schema.define(version: 20150528092314) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "games", "records", column: "season_id"
   add_foreign_key "games", "teams", column: "away_team_id"
   add_foreign_key "games", "teams", column: "home_team_id"
+  add_foreign_key "records", "league"
+  add_foreign_key "records", "teams"
 end
