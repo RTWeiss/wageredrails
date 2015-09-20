@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150829231526) do
   add_index "images", ["user_id"], name: "index_images_on_user_id", unique: true, using: :btree
 
   create_table "league", force: :cascade do |t|
-    t.integer "name"
+    t.string "name"
   end
 
   create_table "records", force: :cascade do |t|
