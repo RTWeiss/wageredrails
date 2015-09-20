@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150829231526) do
+ActiveRecord::Schema.define(version: 20150920004139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 20150829231526) do
 
   add_index "images", ["user_id"], name: "index_images_on_user_id", unique: true, using: :btree
 
-  create_table "league", force: :cascade do |t|
+  create_table "leagues", force: :cascade do |t|
     t.string "name"
   end
 
@@ -80,8 +80,9 @@ ActiveRecord::Schema.define(version: 20150829231526) do
   end
 
   create_table "teams", force: :cascade do |t|
-    t.string "name"
-    t.string "logo_url"
+    t.string  "name"
+    t.string  "logo_url"
+    t.integer "league_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,6 +113,6 @@ ActiveRecord::Schema.define(version: 20150829231526) do
   add_foreign_key "games", "records", column: "season_id"
   add_foreign_key "games", "teams", column: "away_team_id"
   add_foreign_key "games", "teams", column: "home_team_id"
-  add_foreign_key "records", "league"
+  add_foreign_key "records", "leagues"
   add_foreign_key "records", "teams"
 end

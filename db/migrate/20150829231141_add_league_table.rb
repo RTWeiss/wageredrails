@@ -1,6 +1,6 @@
 class AddLeagueTable < ActiveRecord::Migration
   def change
-    create_table :league do |t|
+    create_table :leagues do |t|
       t.string :name
     end
   end
