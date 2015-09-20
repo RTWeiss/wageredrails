@@ -3,7 +3,6 @@ require 'nokogiri'
 require 'date'
 require 'open-uri'
 
-
 def find_or_create_by_name(team)
   if Team.exists?(name: team)
     Team.where(name: team).first.id
