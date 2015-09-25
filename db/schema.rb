@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150920004139) do
+ActiveRecord::Schema.define(version: 20150925185240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150920004139) do
     t.integer  "home_team_id"
     t.integer  "away_team_id"
     t.integer  "season_id"
+    t.integer  "league_id"
   end
 
   create_table "images", force: :cascade do |t|
@@ -110,6 +111,7 @@ ActiveRecord::Schema.define(version: 20150920004139) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "games", "leagues"
   add_foreign_key "games", "records", column: "season_id"
   add_foreign_key "games", "teams", column: "away_team_id"
   add_foreign_key "games", "teams", column: "home_team_id"
