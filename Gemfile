@@ -29,6 +29,7 @@ gem 'mini_magick'
 gem 'will_paginate', '3.0.7'
 gem 'devise'
 gem 'nokogiri'
+gem 'newrelic_rpm'
 # gem 'open-uri'
 
 # Use Unicorn as the app server
